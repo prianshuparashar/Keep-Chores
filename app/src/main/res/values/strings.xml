@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Keep Chores</string>
+    <string name="dummy">Dummy</string>
+    <string name="add_task">Add Task</string>
+    <string name="title">Title</string>
+    <string name="description">Description (optional)</string>
+    <string name="set_date">Set Date</string>
+    <string name="set_time">Set Time</string>
+    <string name="search">Search Your Chores</string>
+    <string name="dummy_day">Wednesday</string>
+    <string name="dummy_time">10:10 AM</string>
+    <string name="dummy_date">02 September 2019</string>
+    <string name="done">Done</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="heading">Chores To Do</string>
+    <string name="dismiss">Dismiss</string>
+</resources>

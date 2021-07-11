@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_background"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mserif_bold"
+        android:gravity="center"
+        android:padding="14dp"
+        android:text="@string/add_task"
+        android:textColor="@color/darker_brown"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="11dp"
+        android:background="@color/bg_skin" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:fontFamily="@font/mserif_book"
+            android:hint="@string/title"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            android:paddingStart="20dp"
+            android:paddingTop="9dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/darker_brown"
+            android:textColorHint="@color/brown_tint" />
+
+        <TextView
+            android:id="@+id/set_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableTop="@drawable/ic_calendar"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/set_date"
+            android:textColor="@color/darker_brown"
+            android:textSize="12sp"
+            tools:ignore="KeyboardInaccessibleWidget,UseCompatTextViewDrawableXml" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/bg_skin" />
+
+        <TextView
+            android:id="@+id/set_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableTop="@drawable/ic_clock"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/set_time"
+            android:textColor="@color/darker_brown"
+            android:textSize="12sp"
+            tools:ignore="KeyboardInaccessibleWidget,UseCompatTextViewDrawableXml" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edit_text_background"
+        android:ems="10"
+        android:fontFamily="@font/mserif_book"
+        android:hint="@string/description"
+        android:importantForAutofill="no"
+        android:inputType="textShortMessage|textCapSentences"
+        android:paddingStart="20dp"
+        android:paddingTop="9dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="12dp"
+        android:textColor="@color/darker_brown"
+        android:textColorHint="@color/brown_tint" />
+
+    <Button
+        android:id="@+id/add_task_btn"
+        style="@style/CustomButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/add_task" />
+
+</LinearLayout>
