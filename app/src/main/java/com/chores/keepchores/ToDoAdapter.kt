@@ -45,7 +45,7 @@ class ToDoAdapter(val context: Context, var list: List<ToDoModel>) : RecyclerVie
             GlobalScope.launch(Dispatchers.IO) {
                 db.toDoDao().deleteTask(list[position].id)
             }
-            homeScreenInstance.cancelAlarm(position)
+//            homeScreenInstance.cancelAlarm(position)
             notifyItemChanged(position)
         }
 
@@ -57,7 +57,7 @@ class ToDoAdapter(val context: Context, var list: List<ToDoModel>) : RecyclerVie
             GlobalScope.launch(Dispatchers.IO) {
                 db.toDoDao().finishTask(list[position].id)
             }
-            homeScreenInstance.cancelAlarm(position)
+//            homeScreenInstance.cancelAlarm(position)
             notifyItemChanged(position)
         }
     }

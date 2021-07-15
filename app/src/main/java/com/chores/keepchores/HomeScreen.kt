@@ -126,7 +126,7 @@ class HomeScreen : AppCompatActivity() {
                             }
                         }
 
-                        setAlarm(toDo)
+//                        setAlarm(toDo)
 
                         // Dismissing the dialog after adding task
                         bottomSheetDialog.dismiss()
@@ -138,25 +138,25 @@ class HomeScreen : AppCompatActivity() {
             bottomSheetDialog.show()
         }
 
-        createNotificationChannel()
+//        createNotificationChannel()
     }
 
-    @SuppressLint("NewApi")
-    private fun setAlarm(toDo: ToDoModel) {
-        val intent = Intent(applicationContext, AlarmReceiver::class.java)
-        val c = Calendar.getInstance()
-        c.apply {
-            timeInMillis = toDo.date
-            set(Calendar.HOUR_OF_DAY, hourOfDay)
-            set(Calendar.MINUTE, minute)
-            set(Calendar.SECOND, 0)
-        }
-        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
-        Log.d("AlarmTag", list.indexOf(toDo).toString() + " : SET")
-        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(alarmPendingIntent)
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.timeInMillis, alarmPendingIntent)
-    }
+//    @SuppressLint("NewApi")
+//    private fun setAlarm(toDo: ToDoModel) {
+//        val intent = Intent(applicationContext, AlarmReceiver::class.java)
+//        val c = Calendar.getInstance()
+//        c.apply {
+//            timeInMillis = toDo.date
+//            set(Calendar.HOUR_OF_DAY, hourOfDay)
+//            set(Calendar.MINUTE, minute)
+//            set(Calendar.SECOND, 0)
+//        }
+//        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+//        Log.d("AlarmTag", list.indexOf(toDo).toString() + " : SET")
+//        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        alarmManager.cancel(alarmPendingIntent)
+//        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.timeInMillis, alarmPendingIntent)
+//    }
 
     private fun filteredDisplay(keyword: String) {
         db.toDoDao().getTask().observe(this, Observer {
@@ -224,7 +224,7 @@ class HomeScreen : AppCompatActivity() {
                         db.toDoDao().updateTask(toDo)
                     }
 
-                    updateAlarm(toDo)
+//                    updateAlarm(toDo)
 
                     // Dismissing the dialog after adding task
                     bottomSheetDialog.dismiss()
@@ -236,37 +236,37 @@ class HomeScreen : AppCompatActivity() {
         bottomSheetDialog.show()
     }
 
-    @SuppressLint("NewApi")
-    private fun updateAlarm(toDo: ToDoModel) {
-        val intent = Intent(applicationContext, AlarmReceiver::class.java)
-        val c = Calendar.getInstance()
-        c.apply {
-            timeInMillis = toDo.date
-            set(Calendar.HOUR_OF_DAY, hourOfDay)
-            set(Calendar.MINUTE, minute)
-            set(Calendar.SECOND, 0)
-        }
-        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
-        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(alarmPendingIntent)
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.timeInMillis, alarmPendingIntent)
-    }
+//    @SuppressLint("NewApi")
+//    private fun updateAlarm(toDo: ToDoModel) {
+//        val intent = Intent(applicationContext, AlarmReceiver::class.java)
+//        val c = Calendar.getInstance()
+//        c.apply {
+//            timeInMillis = toDo.date
+//            set(Calendar.HOUR_OF_DAY, hourOfDay)
+//            set(Calendar.MINUTE, minute)
+//            set(Calendar.SECOND, 0)
+//        }
+//        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+//        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        alarmManager.cancel(alarmPendingIntent)
+//        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.timeInMillis, alarmPendingIntent)
+//    }
 
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel(CHANNEL_ID, "Alarm Service Channel", NotificationManager.IMPORTANCE_HIGH)
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
-    }
+//    private fun createNotificationChannel() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            val notificationChannel = NotificationChannel(CHANNEL_ID, "Alarm Service Channel", NotificationManager.IMPORTANCE_HIGH)
+//            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//            notificationManager.createNotificationChannel(notificationChannel)
+//        }
+//    }
 
-    fun cancelAlarm(position: Int) {
-        val toDo = list[position]
-        val intent = Intent(applicationContext, AlarmReceiver::class.java)
-        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
-        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        Log.d("AlarmTag", toDo.id.toInt().toString() + " : CANCEL")
-        alarmManager.cancel(alarmPendingIntent)
-        alarmPendingIntent.cancel()
-    }
+//    fun cancelAlarm(position: Int) {
+//        val toDo = list[position]
+//        val intent = Intent(applicationContext, AlarmReceiver::class.java)
+//        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+//        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        Log.d("AlarmTag", toDo.id.toInt().toString() + " : CANCEL")
+//        alarmManager.cancel(alarmPendingIntent)
+//        alarmPendingIntent.cancel()
+//    }
 }
