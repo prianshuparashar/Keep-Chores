@@ -11,14 +11,14 @@ https://user-images.githubusercontent.com/81189062/125954826-4c510b84-c216-40f5-
 
 ## Screenshots
 
-![SplashScreenKC](https://user-images.githubusercontent.com/81189062/125956029-dd3e77fa-06b8-41af-a870-c52ab2096416.jpg)
-![HomeScreenKC](https://user-images.githubusercontent.com/81189062/125956059-d3323493-8a6c-4a9f-a397-e47cf19620d3.jpg)
+![SplashScreenKC](https://user-images.githubusercontent.com/81189062/125956785-09b229d3-383b-4f32-ac7f-f77b8158b5dd.jpg)
+![HomeScreenKC](https://user-images.githubusercontent.com/81189062/125956807-4b523b18-9ca2-4546-a72b-3439b6f460a8.jpg)
 
-![AddTasksKC](https://user-images.githubusercontent.com/81189062/125956087-bba4d607-713a-4844-8003-893407e26dcf.jpg)
-![SetTimeKC](https://user-images.githubusercontent.com/81189062/125956111-33a6302b-a2a4-4421-82db-c1b855dbf8c3.jpg)
+![AddTasksKC](https://user-images.githubusercontent.com/81189062/125956816-4994ba6b-9c87-495e-a30d-bf53aa5d8f5d.jpg)
+![SetTimeKC](https://user-images.githubusercontent.com/81189062/125956831-34ec3a72-bb4a-4162-9408-759df2a0ec59.jpg)
 
-![ReadKC](https://user-images.githubusercontent.com/81189062/125956123-7ef26821-2136-4d8e-bd0c-718ae7b86145.jpg)
-![SearchKC](https://user-images.githubusercontent.com/81189062/125956144-0c3c7ecb-9c85-458a-b7f3-983632bf11ff.jpg)
+![ReadKC](https://user-images.githubusercontent.com/81189062/125956857-99d5f32d-4a6f-44d6-aa5f-99d21e6fe16e.jpg)
+![SearchKC](https://user-images.githubusercontent.com/81189062/125956863-4557c505-d2f6-436b-a0fc-c81db4a49442.jpg)
 
 ## Cloning & Installation
 
