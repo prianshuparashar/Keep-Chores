@@ -13,24 +13,27 @@
         android:theme="@style/Theme.KeepChores">
         <activity
             android:name=".HomeScreen"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RingingActivity" />
+        <activity
+            android:name=".RingingActivity"
+            android:exported="false" />
+
         <service
             android:name=".AlarmService"
             android:exported="false" />
+
         <receiver
             android:name=".AlarmReceiver"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
 </manifest>

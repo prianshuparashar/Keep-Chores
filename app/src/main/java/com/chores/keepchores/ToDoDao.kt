@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Dao
 interface ToDoDao {
-    @Insert()
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertTask(toDoModel: ToDoModel): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)

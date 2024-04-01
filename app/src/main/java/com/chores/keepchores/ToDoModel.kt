@@ -3,7 +3,7 @@ package com.chores.keepchores
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "ToDoModel")
 data class ToDoModel (
         var title: String,
         var description: String,
