@@ -44,4 +44,16 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
     </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="Theme.KeepChores.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/bg_skin</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_todo_splash</item>
+        <!-- Duration of icon animation (optional) -->
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <!-- Icon background optional -->
+        <!-- <item name="windowSplashScreenIconBackgroundColor">@color/white</item> -->
+        <!-- Theme applied after splash removal -->
+        <item name="postSplashScreenTheme">@style/Theme.KeepChores</item>
+    </style>
 </resources>

@@ -13,10 +13,8 @@
         android:theme="@style/Theme.KeepChores">
         <activity
             android:name=".HomeScreen"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.KeepChores.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -9,6 +9,7 @@ appcompat = "1.7.1"
 material = "1.13.0"
 constraintlayout = "2.2.1"
 coreKtx = "1.17.0"
+coreSplash = "1.0.1"
 
 # Persistence
 room = "2.8.0"
@@ -27,11 +28,12 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 material = { module = "com.google.android.material:material", version.ref = "material" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplash" }
 
 # Room
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 # Animation
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }

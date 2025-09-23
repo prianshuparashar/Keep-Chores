@@ -42,6 +42,7 @@ android {
 dependencies {
     // Core UI + AndroidX
     implementation(libs.bundles.uiCore)
+    implementation(libs.splashscreen)
 
     // Persistence (Room runtime + KTX)
     implementation(libs.bundles.room)
@@ -50,7 +51,7 @@ dependencies {
     implementation(libs.lottie)
 
     // KSP compiler artifact for Room
-    ksp(libs.room.compiler)
+    ksp(libs.roomCompiler)
 
     // Unit tests
     testImplementation(libs.bundles.testUnit)
