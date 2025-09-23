@@ -1,15 +1,52 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+# === Android & Gradle build artifacts ===
+# Root and module build output
+/build/
+*/build/
+
+# Gradle cache & state
+.gradle/
+# Local machine / SDK configuration
 local.properties
+
+# Native / external build directories
+.externalNativeBuild/
+.cxx/
+
+# Generated files (via data binding, navigation, kapt/ksp, etc.) live under build/ already
+
+# APK / AAB / bundles occasionally produced outside build tree
+*.apk
+*.ap_*
+*.aab
+
+# Signing keys (DO NOT COMMIT REAL KEYS). Store in a secure location outside VCS.
+*.keystore
+*.jks
+
+# === IDE (IntelliJ / Android Studio) ===
+*.iml
+.idea/
+# (Optionally keep code style or run configs: uncomment to allow)
+#!.idea/codeStyles
+#!.idea/runConfigurations
+
+# macOS / Windows noise
+.DS_Store
+Thumbs.db
+
+# === Logs & captures ===
+/captures/
+*.log
+
+# === Kotlin / Java tooling caches ===
+# (Most already under build or .gradle; keep explicit for safety)
+.kotlinc/
+
+# === Misc ===
+# JetBrains shared indexes (if enabled)
+.jb/
+
+# === Previously duplicated entries cleaned ===
+# (Removed duplicates of local.properties, .gradle, build, .idea specific files)
+
+# End of file

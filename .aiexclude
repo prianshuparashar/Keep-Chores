@@ -1,0 +1,43 @@
+# Directories and files to exclude from AI context / indexing
+# (Similar intent to .gitignore but purpose-specific; keep only what helps code understanding.)
+
+# Build outputs
+/build/
+*/build/
+
+# Gradle caches and wrappers
+.gradle/
+gradle/
+
+# IDE project metadata
+.idea/
+*.iml
+
+# Local machine specific config
+local.properties
+
+# Native / external build artifacts
+.cxx/
+.externalNativeBuild/
+
+# Signing / secret material (patterns only; do not store real keys here)
+*.keystore
+*.jks
+
+# Large or noisy captures/logs
+captures/
+*.log
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Git internals should never be needed
+.git/
+
+# Optional: Uncomment to exclude docs or images if not needed for AI (usually KEEP useful docs)
+#!README.md
+#!app/src/main/res/drawable/
+
+# End of file
+
