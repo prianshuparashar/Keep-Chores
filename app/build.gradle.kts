@@ -58,4 +58,7 @@ dependencies {
 
     // Instrumented Android tests
     androidTestImplementation(libs.bundles.androidTest)
+
+    // Lifecycle and ViewModel with Compose integration
+    implementation(libs.lifecycleViewModel)
 }

@@ -1,29 +1,30 @@
 package com.chores.keepchores
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chores.keepchores.databinding.ChoresItemViewBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
-class ToDoAdapter(val context: Context, var list: List<ToDoModel>) : RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder>() {
+class ToDoAdapter(
+    private var list: List<ToDoModel>,
+    private val onFinish: (Long) -> Unit,
+    private val onDelete: (Long) -> Unit,
+    private val onUpdateRequest: (Int) -> Unit
+) : RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder>() {
 
-    val db by lazy {
-        AppDatabase.getDatabase(context)
+    fun getItem(position: Int): ToDoModel = list[position]
+
+    fun submitList(newList: List<ToDoModel>) {
+        list = newList
+        notifyDataSetChanged() // TODO replace with DiffUtil
     }
-    val homeScreenInstance = context as HomeScreen
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
-        // Binding choresItemViews & Inflating the layout
         val cardBinding = ChoresItemViewBinding.inflate(
-                LayoutInflater.from(parent.context)
+            LayoutInflater.from(parent.context), parent, false
         )
         return ToDoViewHolder(cardBinding)
     }
@@ -31,40 +32,31 @@ class ToDoAdapter(val context: Context, var list: List<ToDoModel>) : RecyclerVie
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(holder: ToDoViewHolder, position: Int) {
-        holder.bind(list[position])
-        val isExpanded = list[position].isExpanded
-        holder.viewBinding.expandableLinearLayout.visibility = if (isExpanded) View.VISIBLE else View.GONE
+        val item = list[position]
+        holder.bind(item)
+        holder.viewBinding.expandableLinearLayout.visibility = if (item.isExpanded) View.VISIBLE else View.GONE
+
         holder.viewBinding.cardContainer.setOnClickListener {
-            list[position].isExpanded = !list[position].isExpanded
+            item.isExpanded = !item.isExpanded
             notifyItemChanged(position)
         }
 
-        holder.viewBinding.descriptionCard.visibility = if (list[position].description.isEmpty()) View.GONE else View.VISIBLE
+        holder.viewBinding.descriptionCard.visibility = if (item.description.isEmpty()) View.GONE else View.VISIBLE
 
         holder.viewBinding.delete.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO) {
-                db.toDoDao().deleteTask(list[position].id)
-            }
-//            homeScreenInstance.cancelAlarm(position)
-            notifyItemChanged(position)
+            onDelete(item.id)
         }
 
         holder.viewBinding.update.setOnClickListener {
-            homeScreenInstance.updateViaBottomSheet(position)
+            onUpdateRequest(position)
         }
 
         holder.viewBinding.done.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO) {
-                db.toDoDao().finishTask(list[position].id)
-            }
-//            homeScreenInstance.cancelAlarm(position)
-            notifyItemChanged(position)
+            onFinish(item.id)
         }
     }
 
-    override fun getItemId(position: Int): Long {
-        return list[position].id
-    }
+    override fun getItemId(position: Int): Long = list[position].id
 
     class ToDoViewHolder (val viewBinding: ChoresItemViewBinding) : RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(toDoModel: ToDoModel) {
@@ -74,19 +66,17 @@ class ToDoAdapter(val context: Context, var list: List<ToDoModel>) : RecyclerVie
             updateTime(toDoModel.time)
         }
 
-        private fun updateDate(date: Long) {
-            // Format: 02 September 2019 & Wednesday
-            val date = Date(date)
-            val sdf_date = SimpleDateFormat("dd MMMM yyyy")
-            val sdf_day = SimpleDateFormat("EEEE")
-            viewBinding.dateCard.text = sdf_date.format(date)
-            viewBinding.dayCard.text = sdf_day.format(date)
+        private fun updateDate(dateLong: Long) {
+            val date = Date(dateLong)
+            val sdfDate = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+            val sdfDay = SimpleDateFormat("EEEE", Locale.getDefault())
+            viewBinding.dateCard.text = sdfDate.format(date)
+            viewBinding.dayCard.text = sdfDay.format(date)
         }
 
-        private fun updateTime(time: Long) {
-            // Format: 7:15 AM or 10:10 PM
-            val sdf = SimpleDateFormat("h:mm a")
-            viewBinding.timeCard.text = sdf.format(Date(time))
+        private fun updateTime(timeLong: Long) {
+            val sdf = SimpleDateFormat("h:mm a", Locale.getDefault())
+            viewBinding.timeCard.text = sdf.format(Date(timeLong))
         }
     }
 }
