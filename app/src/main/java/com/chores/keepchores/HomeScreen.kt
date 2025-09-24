@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chores.keepchores.databinding.ActivityHomeScreenBinding
 import com.chores.keepchores.databinding.DialogBottomSheetBinding
@@ -31,6 +32,8 @@ class HomeScreen : AppCompatActivity() {
     private var minute = 0
     private lateinit var date: Calendar
     private lateinit var time: Calendar
+
+    private lateinit var searchDebouncer: Debouncer<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -62,9 +65,13 @@ class HomeScreen : AppCompatActivity() {
             applyFilterAndRender()
         }
 
+        searchDebouncer = Debouncer(lifecycleScope, 300L)
+
         binding.editText.addTextChangedListener(SimpleAfterTextWatcher { text ->
-            currentQuery = text
-            applyFilterAndRender()
+            searchDebouncer.submit(text) { q ->
+                currentQuery = q
+                applyFilterAndRender()
+            }
         })
 
         binding.fabAdd.setOnClickListener { openCreateBottomSheet() }
@@ -143,6 +150,11 @@ class HomeScreen : AppCompatActivity() {
         bottomSheetDialog.show()
     }
 
+    override fun onDestroy() {
+        // cancel pending debounce to avoid running after activity is gone
+        if (this::searchDebouncer.isInitialized) searchDebouncer.cancel()
+        super.onDestroy()
+    }
 
     private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
